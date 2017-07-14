@@ -7,9 +7,11 @@ export default class NavigationItem extends React.Component {
   }
 
   render() {
+    const { toggle } = this.props;
+
     return(
       <li>
-        <Link to={this.props.target}>{this.props.title}</Link>
+        <Link to={this.props.target} onClick={toggle}>{this.props.title}</Link>
       </li>
     );
   }

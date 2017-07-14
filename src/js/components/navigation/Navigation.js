@@ -12,13 +12,16 @@ class Navigation extends React.Component {
    */
   constructor() {
     super();
+
+    const toggle = this.toggle.bind(this);
+
     this.state = {
       collapsed: true,
       children: [
-        <NavigationItem key="1" title="Login" target="login"></NavigationItem>,
-        <NavigationItem key="2" title="Settings" target="settings"></NavigationItem>,
-        <NavigationItem key="3" title="Playlists" target="playlists"></NavigationItem>,
-        <NavigationItem key="4" title="Songs" target="songs"></NavigationItem>
+        <NavigationItem key="1" title="Login" target="login" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="2" title="Settings" target="settings" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="3" title="Playlists" target="playlists" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="4" title="Songs" target="songs" toggle={toggle}></NavigationItem>
       ]
     }
   }
