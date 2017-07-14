@@ -1,0 +1,33 @@
+body {
+  font-family: "Helvetica Neue",Roboto,Arial,"Droid Sans",sans-serif;
+}
+
+.status-info-box {
+  border: 1px solid #E6E9ED;
+}
+
+
+.status-info-box-icon {
+  height: 100%;
+  text-align: center;
+  float: left;
+  font-size: 85px;
+}
+
+.status-info-box-icon i {
+    background: rgba(0,0,0,0.2);
+}
+
+.status-info-box-content {
+  float: left;
+  padding: 15px 10px 10px;
+}
+
+.status-info-box-content h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.status-info-box-content p {
+  font-weight: 400;
+}

@@ -1,0 +1,138 @@
+body {
+  padding-top: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* INFO-BOX STUFFF */
+
+.main-sidebar {
+  position: absolute;
+  z-index: 800;
+}
+
+.info-box {
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  color: #fff;
+  background: #f8f8f8;
+}
+
+.panel-default .panel-footer {
+  border-color: #777372;
+}
+
+.panel-blue {
+  border-color: #337ab7;
+}
+
+.panel-blue .panel-heading {
+  background: #337ab7;
+}
+
+.panel-blue .panel-footer {
+  color: #337ab7;
+}
+
+.panel-green {
+  border-color: #5cb85c;
+}
+
+.panel-green .panel-heading {
+  background: #5cb85c;
+}
+
+.panel-green .panel-footer {
+  color: #5cb85c;
+}
+
+.panel-yellow {
+  border-color: #f0ad4e;
+}
+
+.panel-yellow .panel-heading {
+  background: #f0ad4e;
+}
+
+.panel-yellow .panel-footer {
+  color: #f0ad4e;
+}
+
+.panel-red {
+  border-color: #d9534f;
+}
+
+.panel-red .panel-heading {
+  background: #d9534f;
+}
+
+.panel-red .panel-footer {
+  color: #d9534f;
+}
+
+.info-box-thumb {
+  height: 100%;
+  width: 100%;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.info-box-thumb img {
+  height: 120px;
+}
+
+.info-box-heading {
+  padding: 0 0 0 0;
+}
+
+.info-box-content {
+  padding-top: 15px;
+  padding-right: 20px;
+}
+
+.info-box-content .content-big {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+.info-box-content p {
+
+}
+
+/* INFO-BOX STUFF END */
+
+/* PLAYLIST DROPDOWN */
+
+.playlist-dropdown {
+
+}
+
+.playlist-dropdown-title {
+
+}
+
+.playlist-dropdown-icon {
+  padding-left: 10px;
+  font-size: 30px;
+}
+
+.playlist-dropdown .btn {
+  border:0px solid transparent;
+}
+
+.playlist-dropdown .btn-default {
+  padding: 0px;
+  font-size: 14px;
+  background-color: inherit;
+  border:0px solid transparent;
+  background-image: none;
+}
+
+/* END PLAYLIST DROPDOWN */
+
+/* HELPER CLASSES */
+.hidden {
+  visibility: hidden;
+}
+/*END HELPER CLASSES*/
