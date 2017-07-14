@@ -35,7 +35,7 @@ export class SongItem extends React.Component {
 
               <div class="text-right info-box-content">
 
-                <PlaylistDropdown playlist={this.props.playlists}></PlaylistDropdown>
+                <PlaylistDropdown playlists={this.props.playlists}></PlaylistDropdown>
 
                 <div class="content-big">
                   {artist}

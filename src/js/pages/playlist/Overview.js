@@ -1,5 +1,6 @@
 import React from 'react'
 import { PlaylistItem } from '../../components/playlist/Item';
+import { PlaylistCreate } from '../../components/playlist/Create';
 
 class PlaylistOverview extends React.Component {
   constructor() {
@@ -18,6 +19,7 @@ class PlaylistOverview extends React.Component {
       <div class="row">
         <h4>Available Streams</h4>
         <p>List of all available streams</p>
+        <PlaylistCreate></PlaylistCreate>
         { this.state.children }
       </div>
     );

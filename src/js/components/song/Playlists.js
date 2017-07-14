@@ -8,11 +8,15 @@ export default class PlaylistDropdown extends React.Component {
 
     const { playlists = [] } = this.props;
 
-    const children = playlists.map((playlist) => <MenuItem eventKey={playlist._id}>Action</MenuItem>);
+    const children = playlists.map((playlist) => <MenuItem key={playlist._id} eventKey={playlist._id} onClick={this.addToPlaylist.bind(this, playlist)}>{playlist.title}</MenuItem>);
 
     this.state = {
-      children: []
+      children: children
     }
+  }
+
+  addToPlaylist(item) {
+    console.log(item);
   }
 
   render() {
@@ -24,7 +28,7 @@ export default class PlaylistDropdown extends React.Component {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-
+          {this.state.children}
         </Dropdown.Menu>
       </Dropdown>
     )

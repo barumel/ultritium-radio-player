@@ -13,13 +13,25 @@ export class SongList extends React.Component {
     }
 
     // Pass this via props
-    this.playlists = [];
+    const playlists = [{
+      _id: 1,
+      title: 'Samy Deluxe',
+      description: "Samy's greates hits"
+    }, {
+      _id: 2,
+      title: 'Oeschs',
+      description: "Super Oeschs"
+    }, {
+      _id: 3,
+      title: 'Extra long title to test dropdown max length ',
+      description: "Super Oeschs"
+    }];
 
     this.state = {
       collapsed: false,
       children: [
-        <SongItem key="1" song={song}></SongItem>,
-        <SongItem key="2" song={song}></SongItem>
+        <SongItem key="1" song={song} playlists={playlists}></SongItem>,
+        <SongItem key="2" song={song} playlists={playlists}></SongItem>
       ]
     }
   }
