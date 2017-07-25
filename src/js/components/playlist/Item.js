@@ -1,5 +1,6 @@
 import React from 'react';
 import { Panel } from 'react-bootstrap';
+import { PlaylistItemHeader } from './item/Header';
 import { PlaylistItemContent } from './item/Content';
 import { PlaylistItemFooter } from './item/Footer';
 
@@ -11,6 +12,10 @@ export class PlaylistItem extends React.Component {
   render() {
     const footer = (
       <PlaylistItemFooter></PlaylistItemFooter>
+    );
+
+    const header = (
+      <PlaylistItemHeader></PlaylistItemHeader>
     );
 
     return(

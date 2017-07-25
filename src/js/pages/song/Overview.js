@@ -18,8 +18,8 @@ export default class SongOverview extends React.Component {
   render() {
     return(
       <div class="row">
-        <h3>Songs</h3>
-        <p>Find songs and add them to your favorite playlists</p>
+        <h3 class="text-center">Songs</h3>
+        <p class="text-center">Find songs and add them to your favorite playlists</p>
         <SongSearch></SongSearch>
         <div class="panel-group" id="accordion">
           {this.state.children}

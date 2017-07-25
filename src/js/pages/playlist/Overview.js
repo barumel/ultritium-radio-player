@@ -30,7 +30,9 @@ class PlaylistOverview extends React.Component {
   render() {
     return(
       <Row>
-        <Tabs defaultActiveKey={1} id="plalist-tabs" bsStyle="pills">
+      <h3 class="text-center">Playlists</h3>
+      <p class="text-center">Find and create playlists</p>
+        <Tabs defaultActiveKey={1} id="plalist-tabs" bsStyle="tabs" class="nav-justified">
           <Tab eventKey={1} title="Home">
             <PlaylistGroup title="Recently Added" playlists={this.state.playlists}></PlaylistGroup>
             <PlaylistGroup title="Most Popular" playlists={this.state.playlists}></PlaylistGroup>

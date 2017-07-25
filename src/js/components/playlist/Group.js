@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button, Modal } from 'react-bootstrap';
 import { PlaylistItem } from './Item';
 
 export class PlaylistGroup extends React.Component {
@@ -44,6 +44,17 @@ export class PlaylistGroup extends React.Component {
         <Col md={12} sm={12} xs={12}>
           <h4 class="text-center">{this.props.title}</h4>
         </Col>
+        <Modal show={false} bsSize="large" aria-labelledby="contained-modal-title-lg">
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>Wrapped Text</h4>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.props.onHide}>Close</Button>
+          </Modal.Footer>
+        </Modal>
         {children}
       </Row>
     );

@@ -38,6 +38,7 @@ export class PlaylistSearch extends React.Component {
 
     return(
       <Row>
+        <h4 class="text-center">Search Playlists</h4>
         <Col md={12} sm={12} xs={12}>
           <FormGroup>
             <InputGroup>

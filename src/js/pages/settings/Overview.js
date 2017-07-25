@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Grid, Row, Col, Tabs, Tab } from 'react-bootstrap';
 
 import { GlobalSettings } from '../../components/settings/Global';
 import { ProfileSettings } from '../../components/settings/Profile';
@@ -18,9 +19,11 @@ export default class SettingsOverview extends React.Component {
 
   render() {
     return(
-      <div>
+      <Row>
+        <h3 class="text-center">Settings</h3>
+        <p class="text-center">Adjust personal settings</p>
         <SettingsAccordion></SettingsAccordion>
-      </div>
+      </Row>
     );
   }
 }

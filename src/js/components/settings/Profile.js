@@ -25,7 +25,7 @@ export class ProfileSettings extends SettingsPanel {
     );
 
     return(
-      <Panel header={header} eventKey={this.props.eventKey} collapsible={true} expanded={!this.state.collapsed}>
+      <Panel header={header} collapsible={true} expanded={!this.state.collapsed}>
         <SettingsFormProfile locked={this.state.locked}></SettingsFormProfile>
       </Panel>
     );
