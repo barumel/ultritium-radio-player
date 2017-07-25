@@ -12,7 +12,7 @@ export class PlaylistItemFooter extends React.Component {
       collapsed: true,
       title: 'Show Tracks',
       children: tracks.map((track) => {
-        return (<ListGroupItem><strong>{track.title}</strong></ListGroupItem>);
+        return (<ListGroupItem><strong>{track.title} - {track.artist}</strong></ListGroupItem>);
       })
     }
   }
@@ -28,7 +28,8 @@ export class PlaylistItemFooter extends React.Component {
   render() {
     const { children } = this.state;
     const playable = children.length > 0;
-    const hidden = children.length <= 0 ? 'hidden' : '';
+    const hideTracks = children.length <= 0 ? 'hidden' : '';
+    const hideEmpty = children.length > 0 ? 'hidden' : '';
 
     return(
       <Row>
@@ -54,11 +55,11 @@ export class PlaylistItemFooter extends React.Component {
         <Col md={12} sm={12} xs={12}>
           <Collapse in={!this.state.collapsed}>
             <div>
-              <ListGroup class={"" + hidden}>
+              <ListGroup class={"" + hideTracks}>
                 {this.state.children}
               </ListGroup>
 
-              <Well>
+              <Well class={"" + hideEmpty}>
                 <p class="text-center">There are currently no tracks in this playlist!</p>
                 <Button bsStyle="success" block>
                   <Link to="songs">Add Some Tracks!</Link>
@@ -69,46 +70,6 @@ export class PlaylistItemFooter extends React.Component {
         </Col>
 
       </Row>
-    );
-
-    return(
-      <div>
-      <Row>
-        <Col md={4} sm={4} xs={4} class="text-center">
-          <span><i class="fa fa-play"></i></span>
-        </Col>
-
-        <Col md={4} sm={4} xs={4} class="text-center">
-          <span><i class="fa fa-star"></i></span>
-        </Col>
-
-        <Col md={4} sm={4} xs={4} class="text-center">
-          <span><i class="fa fa-cog"></i></span>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={12} sm={12} xs={12}>
-          <Button block onClick={this.toggle.bind(this)}>{this.state.title}</Button>
-        </Col>
-        <Col md={12} sm={12} xs={12}>
-          <Collapse in={!this.state.collapsed}>
-            <div>
-              <ListGroup class={"" + hidden}>
-                {this.state.children}
-              </ListGroup>
-
-              <Well>
-                <p class="text-center">There are currently no tracks in this playlist!</p>
-                <Button bsStyle="success" block>
-                  <Link to="songs">Add Some Tracks!</Link>
-                </Button>
-              </Well>
-            </div>
-          </Collapse>
-          </Col>
-        </Row>
-      </div>
     );
   }
 }

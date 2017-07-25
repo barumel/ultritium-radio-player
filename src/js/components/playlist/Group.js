@@ -28,7 +28,7 @@ export class PlaylistGroup extends React.Component {
     const { playlists } = this.props;
     const children = playlists.map((playlist) => {
       return(
-        <Col md={3} sm={3} xs={12}>
+        <Col md={4} sm={6} xs={12}>
           <PlaylistItem
             title={playlist.title}
             count={playlist.count}
