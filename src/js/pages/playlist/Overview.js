@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import { PlaylistGroup } from '../../components/playlist/Group';
 import { PlaylistItem } from '../../components/playlist/Item';
-import { PlaylistCreate } from '../../components/playlist/Create';
 import { PlaylistSearch } from '../../components/playlist/Search';
 
 class PlaylistOverview extends React.Component {
