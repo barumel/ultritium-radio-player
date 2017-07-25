@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Button, ListGroup, ListGroupItem, Collapse, Well } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 export class PlaylistItemFooter extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export class PlaylistItemFooter extends React.Component {
     this.state = {
       collapsed: true,
       title: 'Show Tracks',
-      tracks: tracks.map((track) => {
+      children: tracks.map((track) => {
         return (<ListGroupItem><strong>{track.title}</strong></ListGroupItem>);
       })
     }
@@ -25,9 +26,8 @@ export class PlaylistItemFooter extends React.Component {
   }
 
   render() {
-    const { tracks } = this.state;
-    const empty = tracks.length > 0 ? false : true;
-    const hidden = tracks.length <= 0 ? 'hidden' : '';
+    const { children } = this.state;
+    const hidden = children.length <= 0 ? 'hidden' : '';
 
     return(
       <div>
@@ -35,12 +35,14 @@ export class PlaylistItemFooter extends React.Component {
           <Collapse in={!this.state.collapsed}>
             <div>
               <ListGroup class={"" + hidden}>
-                {this.state.tracks}
+                {this.state.children}
               </ListGroup>
 
               <Well>
                 <p class="text-center">There are currently no tracks in this playlist!</p>
-                <Button bsStyle="success" block>Add Some Tracks!</Button>
+                <Button bsStyle="success" block>
+                  <Link to="songs">Add Some Tracks!</Link>
+                </Button>
               </Well>
             </div>
           </Collapse>

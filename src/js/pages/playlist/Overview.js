@@ -1,27 +1,49 @@
 import React from 'react'
+import { Grid, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { PlaylistGroup } from '../../components/playlist/Group';
 import { PlaylistItem } from '../../components/playlist/Item';
 import { PlaylistCreate } from '../../components/playlist/Create';
+import { PlaylistSearch } from '../../components/playlist/Search';
 
 class PlaylistOverview extends React.Component {
   constructor() {
     super();
     this.state= {
-      children: [
-        <div class="col-md-3 col-sm-3 col-xs-12 nopadding"><PlaylistItem title="Samy Deluxe" count="52" description="Samy's greatest hits" thumb="http://rap.de/wp-content/uploads/2014/01/samy-deluxe.jpg"></PlaylistItem></div>,
-        <div class="col-md-3 col-sm-3 col-xs-12 nopadding"><PlaylistItem title="Mega Awesom" count="79" description="Super Oesch's" thumb="https://www.enjoystmoritz.ch/wp-content/uploads/2017/03/Pressefoto6.jpg"></PlaylistItem></div>,
-        <div class="col-md-3 col-sm-3 col-xs-12 nopadding"><PlaylistItem title="Power Rangers" count="14" description="Power Rangers Squad" thumb="https://vignette4.wikia.nocookie.net/powerrangers/images/8/81/Cover-powerrangersmovie.jpg/revision/latest/scale-to-width-down/660?cb=20161201090346"></PlaylistItem></div>
-      ]
+      playlists: [{
+        title: "Super Oesch's",
+        description: "Super Oesch's greatest hits",
+        thumb: 'https://www.enjoystmoritz.ch/wp-content/uploads/2017/03/Pressefoto6.jpg',
+        count: 25
+      }, {
+        title: 'Samy Deluxe',
+        description: "Samy's greatest hits",
+        thumb: 'http://rap.de/wp-content/uploads/2014/01/samy-deluxe.jpg',
+        count: 250
+      }, {
+        title: 'Power Rangers',
+        description: "Power Rangers Squad",
+        thumb: 'https://vignette4.wikia.nocookie.net/powerrangers/images/8/81/Cover-powerrangersmovie.jpg/revision/latest/scale-to-width-down/660?cb=20161201090346',
+        count: 50000
+      }]
     }
   }
 
   render() {
     return(
-      <div class="row">
-        <h4>Available Streams</h4>
-        <p>List of all available streams</p>
-        <PlaylistCreate></PlaylistCreate>
-        { this.state.children }
-      </div>
+      <Row>
+        <Tabs defaultActiveKey={1} id="plalist-tabs" bsStyle="pills">
+          <Tab eventKey={1} title="Home">
+            <PlaylistGroup title="Recently Added" playlists={this.state.playlists}></PlaylistGroup>
+            <PlaylistGroup title="Most Popular" playlists={this.state.playlists}></PlaylistGroup>
+
+          </Tab>
+          <Tab eventKey={2} title="Genres">aasdfasdfs</Tab>
+          <Tab eventKey={3} title="Categories">wetewrtfghfgh</Tab>
+          <Tab eventKey={4} title="Search">
+            <PlaylistSearch></PlaylistSearch>
+          </Tab>
+        </Tabs>
+      </Row>
     );
   }
 }

@@ -54,8 +54,8 @@ export class PlaylistCreate extends React.Component {
     return(
       <Form horizontal>
         <FormGroup>
-          <Col componentClass={ControlLabel} sm={2}>
-            <Button bsStyle="primary" bsSize="large" onClick={this.toggle.bind(this)} block>Add new Playlist</Button>
+          <Col componentClass={ControlLabel} lg={12} sm={12} xs={12}>
+            <Button bsStyle="info" bsSize="large" onClick={this.toggle.bind(this)} block>Add new Playlist</Button>
           </Col>
         </FormGroup>
 
