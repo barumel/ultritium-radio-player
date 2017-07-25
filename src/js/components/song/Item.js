@@ -1,6 +1,8 @@
 import React from 'react'
-import { Button, DropdownButton, Dropdown, MenuItem } from 'react-bootstrap';
+import { Panel, Button, DropdownButton, Dropdown, MenuItem } from 'react-bootstrap';
 import PlaylistDropdown from './Playlists';
+import { SongItemContent } from './item/Content';
+import { SongItemFooter } from './item/Footer';
 
 
 export class SongItem extends React.Component {
@@ -14,6 +16,17 @@ export class SongItem extends React.Component {
 
   render() {
     const { artist, title, duration, thumb } = this.props.song;
+
+    const footer = (
+      <SongItemFooter song={this.props.song}></SongItemFooter>
+    );
+
+    return(
+      <Panel footer={footer}>
+        <SongItemContent song={this.props.song}></SongItemContent>
+      </Panel>
+    );
+
 
     return(
       <div class="panel panel-default info-box">
