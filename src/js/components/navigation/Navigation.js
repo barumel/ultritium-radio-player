@@ -1,4 +1,5 @@
 import React from 'react'
+import { Nav, Navbar, NavItem, NavDropdown } from 'react-bootstrap';
 import NavigationItem from './Item'
 
 /**
@@ -18,10 +19,10 @@ class Navigation extends React.Component {
     this.state = {
       collapsed: true,
       children: [
-        <NavigationItem key="1" title="Login" target="login" toggle={toggle}></NavigationItem>,
-        <NavigationItem key="2" title="Settings" target="settings" toggle={toggle}></NavigationItem>,
-        <NavigationItem key="3" title="Playlists" target="playlists" toggle={toggle}></NavigationItem>,
-        <NavigationItem key="4" title="Songs" target="songs" toggle={toggle}></NavigationItem>
+        <NavigationItem key="1" title="Settings" target="settings" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="2" title="Playlists" target="playlists" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="3" title="Songs" target="songs" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="4" title="Logout" target="logout" toggle={toggle}></NavigationItem>,
       ]
     }
   }
