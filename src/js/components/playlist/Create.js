@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Form, FormGroup, FormControl, ControlLabel, InputGroup, Col, Button, Collapse } from 'react-bootstrap';
 
 export class PlaylistCreate extends React.Component {
   constructor() {
@@ -29,7 +30,6 @@ export class PlaylistCreate extends React.Component {
     const { id, value } = event.target;
     const data = this.state.data;
     data[id] = value;
-
     this.setState({data});
   }
 
@@ -48,61 +48,62 @@ export class PlaylistCreate extends React.Component {
   }
 
   render() {
-    const collapsed = this.state.collapsed ? 'collapse' : '';
     const { data } = this.state;
     const disabled = data.title == '' || !data.title ? true: false;
 
     return(
-      <div>
-        <div class="btn-group btn-block" style={{paddingBottom: '30px'}}>
-          <button class="btn btn-default btn-block" onClick={this.toggle.bind(this)}>Add new Playlist</button>
-        </div>
+      <Form horizontal>
+        <FormGroup>
+          <Col componentClass={ControlLabel} class={"btn-group btn-block "} sm={2}>
+            <Button bsStyle="default" bsSize="large" onClick={this.toggle.bind(this)} block>Add new Playlist</Button>
+          </Col>
+        </FormGroup>
 
-        <div>
-          <div class={"form " + collapsed} style={{paddingBottom: '30px'}}>
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square"></i></span>
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  class="form-control"
-                  placeholder="Title"
-                  value={data.title}
-                  onChange={this.setValue.bind(this)}
-                  aria-describedby="basic-addon1">
-                </input>
-              </div>
-            </div>
+        <Collapse in={!this.state.collapsed}>
+          <div>
+            <FormGroup>
+              <Col sm={12}>
+                <InputGroup>
+                  <InputGroup.Addon><i class="fa fa-pencil-square"></i></InputGroup.Addon>
+                  <FormControl
+                    type="text"
+                    name="title"
+                    id="title"
+                    value={data.title}
+                    placeholder="Title"
+                    onChange={this.setValue.bind(this)}/>
+                </InputGroup>
+              </Col>
+            </FormGroup>
 
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1"><i class="fa fa-pencil-square"></i></span>
-                <input
-                  type="text"
-                  name="description"
-                  id="description"
-                  class="form-control"
-                  placeholder="Description"
-                  value={data.description}
-                  onChange={this.setValue.bind(this)}
-                  aria-describedby="basic-addon1">
-                </input>
-              </div>
-            </div>
+            <FormGroup>
+              <Col sm={12}>
+                <InputGroup>
+                  <InputGroup.Addon><i class="fa fa-pencil-square"></i></InputGroup.Addon>
+                  <FormControl
+                    type="text"
+                    name="description"
+                    id="description"
+                    value={data.title}
+                    placeholder="Description"
+                    onChange={this.setValue.bind(this)}/>
+                </InputGroup>
+              </Col>
+            </FormGroup>
 
-            <div class="btn-group btn-block">
-              <button class="btn btn-success btn-block" disabled={disabled} onClick={this.create.bind(this)}>Create</button>
-            </div>
+            <FormGroup>
+              <Col componentClass={ControlLabel} class={"btn-group btn-block "} sm={2}>
+                <Button bsStyle="success" bsSize="medium" disabled={disabled} block>Save</Button>
+              </Col>
 
-            <div class="btn-group btn-block">
-              <button class="btn btn-warning btn-block" onClick={this.reset.bind(this)}>Cancel</button>
-            </div>
+              <Col componentClass={ControlLabel} class={"btn-group btn-block "} sm={2}>
+                <Button bsStyle="warning" bsSize="medium" block onClick={this.reset.bind(this)}>Cancel</Button>
+              </Col>
 
+            </FormGroup>
           </div>
-          </div>
-      </div>
+        </Collapse>
+      </Form>
     );
   }
 }
