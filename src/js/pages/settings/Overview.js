@@ -2,6 +2,7 @@ import React from 'react'
 
 import { GlobalSettings } from '../../components/settings/Global';
 import { ProfileSettings } from '../../components/settings/Profile';
+import { SettingsAccordion } from '../../components/settings/Accordion';
 
 export default class SettingsOverview extends React.Component {
   constructor() {
@@ -17,12 +18,8 @@ export default class SettingsOverview extends React.Component {
 
   render() {
     return(
-      <div class="row">
-        <h3>Settings</h3>
-        <p>Configure personal Settings</p>
-        <div class="panel-group" id="accordion">
-          {this.state.children}
-        </div>
+      <div>
+        <SettingsAccordion></SettingsAccordion>
       </div>
     );
   }
