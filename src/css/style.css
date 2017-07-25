@@ -4,6 +4,26 @@ body {
   padding-right: 10px;
 }
 
+.nopadding {
+   padding: 0px !important;
+   margin: 0 !important;
+}
+
+.playlist-item {
+  padding: 0px;
+}
+
+.playlist-item .content-big {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.playlist-item-thumb img {
+  max-height: 100px;
+}
+
+
 /* INFO-BOX STUFFF */
 
 .main-sidebar {
@@ -128,6 +148,9 @@ body {
   border:0px solid transparent;
   background-image: none;
 }
+
+
+
 
 /* END PLAYLIST DROPDOWN */
 
