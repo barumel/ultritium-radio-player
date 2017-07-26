@@ -17,7 +17,7 @@ export class SongItem extends React.Component {
     const { artist, title, duration, thumb } = this.props.song;
 
     const footer = (
-      <SongItemFooter song={this.props.song}></SongItemFooter>
+      <SongItemFooter song={this.props.song} modal={this.props.modal}></SongItemFooter>
     );
 
     return(

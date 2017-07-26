@@ -12,7 +12,7 @@ export class SongGroup extends React.Component {
     const children = songs.map((song) => {
       return(
         <Col md={4} sm={6} xs={12}>
-          <SongItem song={song}></SongItem>
+          <SongItem song={song} modal={this.props.modal}></SongItem>
         </Col>
       );
     });

@@ -52,6 +52,7 @@ export class SongSearch extends React.Component {
   render() {
     const collapsed = this.state.collapsed ? 'collapse' : '';
     const { result } = this.state;
+    const { modal } = this.props;
     const hidden = this.state.result.length == 0 ? 'hidden' : '';
 
     return(
@@ -81,7 +82,7 @@ export class SongSearch extends React.Component {
           </Col>
         </Row>
 
-        <SongGroup title="Result" songs={result}></SongGroup>
+        <SongGroup title="Result" songs={result} modal={modal}></SongGroup>
       </div>
     );
   }

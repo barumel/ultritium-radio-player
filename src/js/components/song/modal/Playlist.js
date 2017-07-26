@@ -7,24 +7,63 @@ export class PlaylistModal extends React.Component {
     super();
 
     this.state = {
-      show: false,
-      active: {}
+      active: []
     }
   }
 
-  activate(id) {
-    console.log('activate', id);
+  activate(playlist) {
     const { active } = this.state;
-    active[id] = active[id] || false;
-    active[id] = !active[id];
+    if (active.includes(playlist)) {
+      _.pull(active, playlist);
+    } else {
+      active.push(playlist);
+    }
+
     this.setState({active});
+  }
+
+  isActive(playlist) {
+    const { active } = this.state;
+    return active.includes(playlist)
+  }
+
+  close() {
+    const { modal } = this.props;
+    let { active } = this.state;
+
+    const result = {
+      song: modal.song,
+      playlists: active
+    }
+
+    active = [];
+    this.setState({active});
+
+    modal.close(result);
+  }
+
+  dismiss() {
+    const { modal } = this.props;
+
+    const active = [];
+    this.setState({active});
+
+    modal.dismiss();
   }
 
   render() {
     const { active } = this.state;
+    const { playlists } = this.props;
     const disabled = _.filter(active, (value) => value).length == 0 ? true : false;
-    console.log(disabled);
-    //const disabled = active.filter((value, key) => value ).length;
+    const children = playlists.map((playlist) => {
+      return(
+        <ListGroupItem onClick={this.activate.bind(this, playlist)}>
+          <strong>{playlist.title}</strong>
+          <p>{playlist.description}</p>
+          <i class={"fa fa-check pull-right " + (this.isActive(playlist) ? '' : 'hidden')}></i>
+        </ListGroupItem>
+      );
+    });
 
     return(
       <Modal {...this.props}>
@@ -35,15 +74,7 @@ export class PlaylistModal extends React.Component {
         <Modal.Body>
           <Row>
             <ListGroup>
-              <ListGroupItem active={active[1]} onClick={this.activate.bind(this, 1)}>
-                Dings
-                <i class={"fa fa-check pull-right " + (active[1] ? '' : 'hidden')}></i>
-              </ListGroupItem>
-
-              <ListGroupItem active={active[2]} onClick={this.activate.bind(this, 2)}>
-                Dings
-                <i class={"fa fa-check pull-right " + (active[2] ? '' : 'hidden')}></i>
-              </ListGroupItem>
+              {children}
             </ListGroup>
           </Row>
         </Modal.Body>
@@ -52,11 +83,11 @@ export class PlaylistModal extends React.Component {
           <Row>
             <FormGroup>
               <Col componentClass={ControlLabel} md={12} sm={12} xs={12}>
-                <Button bsStyle="success" bsSize="medium" disabled={disabled} block>Save</Button>
+                <Button bsStyle="success" bsSize="medium" disabled={disabled} onClick={this.close.bind(this)} block>Save</Button>
               </Col>
 
               <Col componentClass={ControlLabel} md={12} sm={12} xs={12}>
-                <Button bsStyle="warning" bsSize="medium" block>Cancel</Button>
+                <Button bsStyle="warning" bsSize="medium" onClick={this.dismiss.bind(this)} block>Cancel</Button>
               </Col>
 
             </FormGroup>
