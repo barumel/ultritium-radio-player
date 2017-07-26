@@ -53,7 +53,7 @@ export class SongSearch extends React.Component {
     const collapsed = this.state.collapsed ? 'collapse' : '';
     const { result } = this.state;
     const { modal } = this.props;
-    const hidden = this.state.result.length == 0 ? 'hidden' : '';
+    const hide = result.length == 0;
 
     return(
       <div>
@@ -62,7 +62,7 @@ export class SongSearch extends React.Component {
             <Button bsStyle="success" bsSize="large" onClick={this.toggle.bind(this)} block>Search</Button>
           </Col>
 
-          <Col mg={12} sm={12} xs={12}>
+          <Col mg={12} sm={12} xs={12} class="nopadding">
             <Collapse in={!collapsed}>
               <FormGroup>
                 <Col sm={12}>
@@ -82,7 +82,7 @@ export class SongSearch extends React.Component {
           </Col>
         </Row>
 
-        <SongGroup title="Result" songs={result} modal={modal}></SongGroup>
+        <SongGroup title="Result" songs={result} modal={modal} hide={hide}></SongGroup>
       </div>
     );
   }

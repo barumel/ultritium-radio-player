@@ -8,7 +8,10 @@ export class SongGroup extends React.Component {
   }
 
   render() {
-    const { songs } = this.props;
+    const { songs, hide } = this.props;
+    const hidden = hide ? 'hidden' : '';
+
+
     const children = songs.map((song) => {
       return(
         <Col md={4} sm={6} xs={12}>
@@ -18,7 +21,7 @@ export class SongGroup extends React.Component {
     });
 
     return(
-      <Row>
+      <Row class={"" + hidden}>
         <Col md={12} sm={12} xs={12}>
           <h4 class="text-center">{this.props.title}</h4>
         </Col>
