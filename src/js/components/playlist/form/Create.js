@@ -35,7 +35,7 @@ export class PlaylistCreate extends React.Component {
 
   create() {
     console.log(this.state)
-    this.setState({data: {}, collapsed: true});
+    this.reset();
   }
 
   /**
@@ -92,8 +92,31 @@ export class PlaylistCreate extends React.Component {
             </FormGroup>
 
             <FormGroup>
+              <Col sm={12}>
+                <InputGroup>
+                  <InputGroup.Addon><i class="fa fa-music"></i></InputGroup.Addon>
+                  <FormControl
+                    componentClass="select"
+                    id="gener"
+                    name="genre"
+                    value={data.genre}
+                    placeholder="Genresd"
+                    onChange={this.setValue.bind(this)}>
+                      <option value="select">Genre</option>
+                      <option value="hiphop">Hip Hop</option>
+                      <option value="rap">Rap</option>
+                      <option value="rock">Rock</option>
+                      <option value="pop">Pop</option>
+                      <option value="electro">Electro</option>
+                      <option value="mixed">Mixed</option>
+                  </FormControl>
+                </InputGroup>
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
               <Col componentClass={ControlLabel} class={"btn-group btn-block "} sm={2}>
-                <Button bsStyle="success" bsSize="medium" disabled={disabled} block>Save</Button>
+                <Button bsStyle="success" bsSize="medium" disabled={disabled} onClick={this.create.bind(this)} block>Save</Button>
               </Col>
 
               <Col componentClass={ControlLabel} class={"btn-group btn-block "} sm={2}>

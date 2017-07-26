@@ -36,10 +36,9 @@ class PlaylistOverview extends React.Component {
           <Tab eventKey={1} title="Home">
             <PlaylistGroup title="Recently Added" playlists={this.state.playlists}></PlaylistGroup>
             <PlaylistGroup title="Most Popular" playlists={this.state.playlists}></PlaylistGroup>
-
           </Tab>
           <Tab eventKey={2} title="Genres">aasdfasdfs</Tab>
-          <Tab eventKey={3} title="Categories">wetewrtfghfgh</Tab>
+          <Tab eventKey={3} title="Favorites">wetewrtfghfgh</Tab>
           <Tab eventKey={4} title="Search">
             <PlaylistSearch></PlaylistSearch>
           </Tab>
