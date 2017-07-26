@@ -1,6 +1,5 @@
 import React from 'react'
 import { Panel, Button, DropdownButton, Dropdown, MenuItem } from 'react-bootstrap';
-import PlaylistDropdown from './Playlists';
 import { SongItemContent } from './item/Content';
 import { SongItemFooter } from './item/Footer';
 

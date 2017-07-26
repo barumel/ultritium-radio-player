@@ -1,7 +1,6 @@
 import React from 'react'
 import { PlaylistItem } from '../../components/playlist/Item';
 import { SongGroup } from '../../components/song/Group'
-import { SongList } from '../../components/song/List';
 import { SongSearch } from '../../components/song/Search';
 
 export default class SongOverview extends React.Component {

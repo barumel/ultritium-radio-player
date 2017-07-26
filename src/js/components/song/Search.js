@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Col, Button, FormGroup, FormControl, ControlLabel, InputGroup, Collapse } from 'react-bootstrap';
 import { SongGroup } from './Group';
-import { SongList } from '../../components/song/List';
 
 export class SongSearch extends React.Component {
   constructor() {
