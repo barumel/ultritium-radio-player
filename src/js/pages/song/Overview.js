@@ -29,9 +29,6 @@ export default class SongOverview extends React.Component {
         <SongSearch></SongSearch>
         <SongGroup title="Recently Added" songs={this.state.songs}></SongGroup>
         <SongGroup title="Most Popular" songs={this.state.songs}></SongGroup>
-        <div class="panel-group" id="accordion">
-          {this.state.children}
-        </div>
       </div>
     )
   }

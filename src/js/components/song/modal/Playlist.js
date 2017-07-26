@@ -37,10 +37,12 @@ export class PlaylistModal extends React.Component {
             <ListGroup>
               <ListGroupItem active={active[1]} onClick={this.activate.bind(this, 1)}>
                 Dings
+                <i class={"fa fa-check pull-right " + (active[1] ? '' : 'hidden')}></i>
               </ListGroupItem>
 
               <ListGroupItem active={active[2]} onClick={this.activate.bind(this, 2)}>
                 Dings
+                <i class={"fa fa-check pull-right " + (active[2] ? '' : 'hidden')}></i>
               </ListGroupItem>
             </ListGroup>
           </Row>

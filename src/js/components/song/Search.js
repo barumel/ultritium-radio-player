@@ -1,4 +1,6 @@
 import React from 'react'
+import { Row, Col, Button, FormGroup, FormControl, ControlLabel, InputGroup, Collapse } from 'react-bootstrap';
+import { SongGroup } from './Group';
 import { SongList } from '../../components/song/List';
 
 export class SongSearch extends React.Component {
@@ -33,49 +35,54 @@ export class SongSearch extends React.Component {
   }
 
   search() {
-    console.log(this.state);
-    console.log(this);
-    this.setState({result: ['Ugh']});
+    const { term } = this.state;
+
+    let result = [{
+      title: 'Weck mich auf',
+      artist: 'Samy Deluxe'
+    }, {
+      title: 'Super Power Rangers',
+      artist: 'Power Rangers'
+    }];
+
+    if (term.length == 0 || term.length > 4) result = [];
+
+    this.setState({result});
   }
 
   render() {
     const collapsed = this.state.collapsed ? 'collapse' : '';
-    const { data } = this.state;
+    const { result } = this.state;
     const hidden = this.state.result.length == 0 ? 'hidden' : '';
-    //const disabled = data.title == '' || !data.title ? true: false;
 
     return(
       <div>
-        <div class="btn-group btn-block" style={{paddingBottom: '10px'}}>
-          <button class="btn btn-default btn-block" onClick={this.toggle.bind(this)}>Search</button>
-        </div>
+        <Row>
+          <Col mg={12} sm={12} xs={12}>
+            <Button bsStyle="success" bsSize="large" onClick={this.toggle.bind(this)} block>Search</Button>
+          </Col>
 
-        <div>
-          <div class={"form " + collapsed} style={{paddingBottom: '30px'}}>
+          <Col mg={12} sm={12} xs={12}>
+            <Collapse in={!collapsed}>
+              <FormGroup>
+                <Col sm={12}>
+                  <InputGroup>
+                    <FormControl
+                      type="text"
+                      name="term"
+                      id="term"
+                      value={this.state.term}
+                      placeholder="Search"
+                      onChange={this.setTerm.bind(this)}/>
+                  <InputGroup.Addon onClick={this.search.bind(this)}><i class="fa fa-search"></i></InputGroup.Addon>
+                  </InputGroup>
+                </Col>
+              </FormGroup>
+            </Collapse>
+          </Col>
+        </Row>
 
-            <div class="form-group">
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="term"
-                  id="term"
-                  class="form-control"
-                  placeholder="Suche"
-                  onChange={this.setTerm.bind(this)}
-                  aria-describedby="basic-addon1">
-                </input>
-                <span class="input-group-addon" id="basic-addon1">
-                  <i class="fa fa-search" onClick={this.search.bind(this)}></i>
-                </span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class={hidden}>
-          <SongList title="Search results" class={hidden}></SongList>
-        </div>
+        <SongGroup title="Result" songs={result}></SongGroup>
       </div>
     );
   }
