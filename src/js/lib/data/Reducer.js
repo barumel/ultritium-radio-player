@@ -3,7 +3,9 @@ import * as _ from 'lodash';
 export class Reducer {
   constructor(handlers={}) {
     this.handlers = handlers;
-    this.defaults = {};
+    this.defaults = {
+      errors: {}
+    };
 
     _.forEach(handlers, (handler) => this.defaults[handler.getName()] = handler.getDefaults());
   }
@@ -34,6 +36,7 @@ export class Reducer {
    */
   unregisterHandler(action) {
     delete this.handlers[action];
+    delete this.defaults[action];
 
     return this;
   }
@@ -49,6 +52,51 @@ export class Reducer {
   replaceHandler(action, handler) {
     this.unregisterHandler(action);
     this.registerHandler(action, handler);
+
+    return this;
+  }
+
+  /**
+   * Register a new error handler
+   *
+   * @param {String}  action  Action name/type
+   * @param {Handler} handler Handler for this action
+   *
+   * @return {Reducer} this This instance
+   */
+  registerErrorHandler(action, handler) {
+    // Only add the handler if no handler for the given aciton is registered.
+    // If one wants to replace a handler, use unregister/register or replace
+    if (!this.handlers[action]) this.handlers[action] = handler;
+    this.defaults.errors[handler.getName()] = handler.getDefaults();
+    return this;
+  }
+
+  /**
+   * Unregister the error handler for the given action
+   *
+   * @param {String} action Action name/type
+   *
+   * @return {Reducer} this This instance
+   */
+  unregisterErrorHandler(action) {
+    delete this.handlers[action];
+    delete this.defaults.errors[action];
+
+    return this;
+  }
+
+  /**
+   * Replace the given error handler
+   *
+   * @param {String}  action  Action name/type
+   * @param {Handler} handler Handler for this action
+   *
+   * @return {Reducer} this This instance
+   */
+  replaceErrorHandler(action, handler) {
+    this.unregisterErrorHandler(action);
+    this.registerErrorHandler(action, handler);
 
     return this;
   }
