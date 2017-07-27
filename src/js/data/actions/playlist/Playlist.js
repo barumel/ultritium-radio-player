@@ -2,7 +2,7 @@ import { RestActions } from '../../../lib/data/rest/RestActions';
 import { PopularAction } from './action/Popular';
 import { RecentAction } from './action/Recent';
 
-const actions = new RestActions('PLAYLIST', 'ugh/blahh');
+const actions = new RestActions('PLAYLIST', 'api/playlist');
 
 // Add some more actions
 actions.registerAction('RECENT', new RecentAction());

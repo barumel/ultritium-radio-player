@@ -7,8 +7,10 @@ import { connect } from 'react-redux';
 import PlaylistActions from '../../data/actions/playlist/Playlist';
 
 @connect((store) => {
-  console.log(store.playlist);
-  return store.playlist;
+  return {
+    playlist: store.playlist,
+    user: store.user
+  }
 })
 class PlaylistOverview extends React.Component {
   constructor() {
@@ -26,7 +28,9 @@ class PlaylistOverview extends React.Component {
   }
 
   render() {
-    const { recent, popular, find } = this.props;
+    const { recent, popular, find } = this.props.playlist;
+    let { favorites } = this.props.user.get;
+    favorites = favorites || [];
 
     return(
       <Row>
@@ -38,7 +42,9 @@ class PlaylistOverview extends React.Component {
             <PlaylistGroup title="Most Popular" playlists={popular}></PlaylistGroup>
           </Tab>
           <Tab eventKey={2} title="Genres">aasdfasdfs</Tab>
-          <Tab eventKey={3} title="Favorites">wetewrtfghfgh</Tab>
+          <Tab eventKey={3} title="Favorites">
+            <PlaylistGroup title="Favorites" playlists={favorites}></PlaylistGroup>
+          </Tab>
           <Tab eventKey={4} title="Search">
             <PlaylistSearch result={find} onSearch={this.search.bind(this)}></PlaylistSearch>
           </Tab>
