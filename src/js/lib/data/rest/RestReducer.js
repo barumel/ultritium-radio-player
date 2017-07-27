@@ -3,7 +3,6 @@ import { GetHandler } from './handler/Get';
 import { FindHandler } from './handler/Find';
 import { AllHandler } from './handler/All';
 import { ErrorHandler } from './handler/Error';
-console.log(ErrorHandler);
 
 export class RestReducer extends Reducer {
   constructor(prefix, handlers={}) {

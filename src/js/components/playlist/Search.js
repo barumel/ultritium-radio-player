@@ -8,9 +8,18 @@ export class PlaylistSearch extends React.Component {
     super();
 
     this.state = {
-      term: '',
-      result: []
+      term: ''
     };
+  }
+
+  setTerm(event) {
+    const term = event.target.value;
+    this.setState({term});
+  }
+
+  search() {
+    console.log(this.state);
+    return this.props.onSearch(this.state.term);
   }
 
   filter(event) {
@@ -32,7 +41,8 @@ export class PlaylistSearch extends React.Component {
   }
 
   render() {
-    const { term, result } = this.state;
+    const { term } = this.state;
+    const { result } = this.props;
     const hideCreate = term.length > 0 && result.length == 0 ? '' : 'hidden';
     const hideResult = result.length == 0 ? 'hidden' : '';
 
@@ -42,20 +52,20 @@ export class PlaylistSearch extends React.Component {
         <Col md={12} sm={12} xs={12}>
           <FormGroup>
             <InputGroup>
-              <InputGroup.Addon><i class="fa fa-search"></i></InputGroup.Addon>
               <FormControl
                 type="text"
                 name="title"
                 id="title"
                 defaultValue={this.state.term}
                 placeholder="Search"
-                onChange={this.filter.bind(this)}/>
+                onChange={this.setTerm.bind(this)}/>
+            <InputGroup.Addon onClick={this.search.bind(this)}><i class="fa fa-search"></i></InputGroup.Addon>
             </InputGroup>
           </FormGroup>
         </Col>
 
         <Col md={12} sm={12} xs={12} class={"" + hideResult}>
-          <PlaylistGroup title="Result" playlists={this.state.result}></PlaylistGroup>
+          <PlaylistGroup title="Result" playlists={this.props.result}></PlaylistGroup>
         </Col>
 
         <Col md={12} sm={12} xs={12} class={"" + hideCreate}>

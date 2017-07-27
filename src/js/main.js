@@ -4,16 +4,6 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './data/Store';
 import { RestActions } from './lib/data/rest/RestActions';
-import PlaylistActions from './data/actions/playlist/Playlist';
-
-console.log(PlaylistActions);
-
-const actions = new RestActions('PLAYLIST', 'ugh/blahh');
-store.dispatch(PlaylistActions.execute('GET', 1));
-store.dispatch(PlaylistActions.execute('FIND', {title: { like: 'shit'}}));
-store.dispatch(PlaylistActions.execute('ALL'));
-store.dispatch(PlaylistActions.execute('RECENT'));
-store.dispatch(PlaylistActions.execute('POPULAR'));
 
 import Layout from "./pages/Layout";
 import PlaylistOverview from './pages/playlist/Overview';

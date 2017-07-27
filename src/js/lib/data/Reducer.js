@@ -122,7 +122,6 @@ export class Reducer {
    * @return {Promise}
    */
   reduce(state=this.defaults, action) {
-    console.log('DEFAULTS:', this.defaults);
     const { type } = action;
     let result = state;
 

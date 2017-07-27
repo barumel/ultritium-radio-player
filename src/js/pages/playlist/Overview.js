@@ -4,6 +4,7 @@ import { PlaylistGroup } from '../../components/playlist/Group';
 import { PlaylistItem } from '../../components/playlist/Item';
 import { PlaylistSearch } from '../../components/playlist/Search';
 import { connect } from 'react-redux';
+import PlaylistActions from '../../data/actions/playlist/Playlist';
 
 @connect((store) => {
   console.log(store.playlist);
@@ -15,8 +16,17 @@ class PlaylistOverview extends React.Component {
     this.state= {}
   }
 
+  componentWillMount() {
+    this.props.dispatch(PlaylistActions.execute('RECENT'));
+    this.props.dispatch(PlaylistActions.execute('POPULAR'));
+  }
+
+  search(term) {
+    this.props.dispatch(PlaylistActions.execute('FIND', {term: term}));
+  }
+
   render() {
-    const { recent, popular } = this.props;
+    const { recent, popular, find } = this.props;
 
     return(
       <Row>
@@ -30,7 +40,7 @@ class PlaylistOverview extends React.Component {
           <Tab eventKey={2} title="Genres">aasdfasdfs</Tab>
           <Tab eventKey={3} title="Favorites">wetewrtfghfgh</Tab>
           <Tab eventKey={4} title="Search">
-            <PlaylistSearch></PlaylistSearch>
+            <PlaylistSearch result={find} onSearch={this.search.bind(this)}></PlaylistSearch>
           </Tab>
         </Tabs>
       </Row>
