@@ -3,7 +3,12 @@ import { Grid, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import { PlaylistGroup } from '../../components/playlist/Group';
 import { PlaylistItem } from '../../components/playlist/Item';
 import { PlaylistSearch } from '../../components/playlist/Search';
+import { connect } from 'react-redux';
 
+@connect((store) => {
+  console.log(store.playlist);
+  return store.playlist;
+})
 class PlaylistOverview extends React.Component {
   constructor() {
     super();
