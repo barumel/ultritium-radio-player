@@ -1,18 +1,18 @@
 import data from '../DummyData';
 
-export class AllAction {
+export class PutAction {
   constructor(url) {
     this.url = url;
   }
 
-  execute() {
-    const url = `${this.url}`;
-    const result = data[this.url]['all'];
+  execute(id) {
+    const result = data[this.url]['get'];
 
+    const url = `${this.url}/${id}`;
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         return resolve(result);
-      }, 2000);
+      }, 5000);
     });
   }
 }

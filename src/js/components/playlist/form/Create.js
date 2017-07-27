@@ -27,6 +27,7 @@ export class PlaylistCreate extends React.Component {
    * @return void
    */
   setValue(event) {
+    console.log('TSCHEINSCH', event.target);
     const { id, value } = event.target;
     const data = this.state.data;
     data[id] = value;
@@ -34,7 +35,8 @@ export class PlaylistCreate extends React.Component {
   }
 
   create() {
-    console.log(this.state)
+    const { data } = this.state;
+    this.props.onCreate(data);
     this.reset();
   }
 
@@ -97,10 +99,10 @@ export class PlaylistCreate extends React.Component {
                   <InputGroup.Addon><i class="fa fa-music"></i></InputGroup.Addon>
                   <FormControl
                     componentClass="select"
-                    id="gener"
+                    id="genre"
                     name="genre"
                     value={data.genre}
-                    placeholder="Genresd"
+                    placeholder="Genre"
                     onChange={this.setValue.bind(this)}>
                       <option value="select">Genre</option>
                       <option value="hiphop">Hip Hop</option>

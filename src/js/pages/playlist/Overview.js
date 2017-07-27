@@ -3,6 +3,7 @@ import { groupBy } from 'lodash';
 import { Grid, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import { PlaylistGroup } from '../../components/playlist/Group';
 import { PlaylistItem } from '../../components/playlist/Item';
+import { PlaylistCreate } from '../../components/playlist/form/Create';
 import { PlaylistSearch } from '../../components/playlist/Search';
 import { connect } from 'react-redux';
 import PlaylistActions from '../../data/actions/playlist/Playlist';
@@ -27,6 +28,10 @@ class PlaylistOverview extends React.Component {
 
   search(term) {
     this.props.dispatch(PlaylistActions.execute('FIND', {term: term}));
+  }
+
+  create(data) {
+    this.props.dispatch(PlaylistActions.execute('POST', data));
   }
 
   render() {
@@ -54,7 +59,8 @@ class PlaylistOverview extends React.Component {
             <PlaylistGroup title="Favorites" playlists={favorites}></PlaylistGroup>
           </Tab>
           <Tab eventKey={4} title="Search">
-            <PlaylistSearch result={find} onSearch={this.search.bind(this)}></PlaylistSearch>
+            <PlaylistSearch result={find} onSearch={this.search.bind(this)} onCreate={this.create.bind(this)}></PlaylistSearch>
+            <PlaylistCreate onCreate={this.create.bind(this)}></PlaylistCreate>
           </Tab>
         </Tabs>
       </Row>

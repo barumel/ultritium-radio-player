@@ -1,17 +1,18 @@
 import data from '../DummyData';
 
-export class GetAction {
+export class PostAction {
   constructor(url) {
     this.url = url;
   }
 
-  execute(id) {
-    const result = data[this.url]['get'];
+  execute(data) {
+    data.id = new Date();
+    const result = data
 
-    const url = `${this.url}/${id}`;
+    const url = `${this.url}`;
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        return resolve(result);
+        return resolve(data);
       }, 5000);
     });
   }

@@ -1,6 +1,6 @@
 import data from '../DummyData';
 
-export class Find {
+export class FindAction {
   constructor(url) {
     this.url = url;
   }

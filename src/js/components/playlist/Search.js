@@ -22,22 +22,8 @@ export class PlaylistSearch extends React.Component {
     return this.props.onSearch(this.state.term);
   }
 
-  filter(event) {
-    const { value } = event.target;
+  create(data) {
 
-    //console.log(value);
-
-    let result = [{
-      title: 'Found one',
-      description: 'Yup',
-      thumb: 'https://i.ytimg.com/vi/v9oxyswY8fs/maxresdefault.jpg',
-      count: 7
-    }];
-
-    if (value.length > 4) result = [];
-    if (value.length == 0) result = [];
-    this.setState({term: value});
-    this.setState({result});
   }
 
   render() {
@@ -70,10 +56,6 @@ export class PlaylistSearch extends React.Component {
 
         <Col md={12} sm={12} xs={12} class={"" + hideCreate}>
           <p class="text-center">Nothing found!</p>
-        </Col>
-
-        <Col md={12} sm={12} xs={12} class={"" + hideCreate}>
-          <PlaylistCreate></PlaylistCreate>
         </Col>
       </Row>
     );

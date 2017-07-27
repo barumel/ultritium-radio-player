@@ -1,6 +1,7 @@
-import { Get } from './action/Get';
-import { Find } from './action/Find';
-import { All } from './action/All';
+import { GetAction } from './action/Get';
+import { FindAction } from './action/Find';
+import { AllAction } from './action/All';
+import { PostAction } from './action/Post';
 
 export class RestActions {
   constructor(prefix, url, actions={}) {
@@ -8,9 +9,10 @@ export class RestActions {
     this.url = url;
     this.actions = actions;
 
-    this.registerAction('FIND', new Find(url));
-    this.registerAction('ALL', new All(url));
-    this.registerAction('GET', new Get(url));
+    this.registerAction('FIND', new FindAction(url));
+    this.registerAction('ALL', new AllAction(url));
+    this.registerAction('GET', new GetAction(url));
+    this.registerAction('POST', new PostAction(url));
   }
 
   registerAction(name, action) {
