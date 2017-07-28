@@ -27,7 +27,6 @@ export class PlaylistCreate extends React.Component {
    * @return void
    */
   setValue(event) {
-    console.log('TSCHEINSCH', event.target);
     const { id, value } = event.target;
     const data = this.state.data;
     data[id] = value;

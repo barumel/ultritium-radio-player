@@ -6,8 +6,8 @@ export class PostAction {
   }
 
   execute(data) {
-    data.id = new Date();
-    const result = data
+    const result = data;
+    result.id = new Date();
 
     const url = `${this.url}`;
     return new Promise((resolve, reject) => {

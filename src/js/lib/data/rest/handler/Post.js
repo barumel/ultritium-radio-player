@@ -7,7 +7,8 @@ export class PostHandler extends Handler {
 
   handle(state, action) {
     const result = {...state, [this.name]: action.payload};
-    result.all.push(action.payload);
+    if (result.all) result.all.push(action.payload);
+    if (result.recent) result.recent.unshift(action.payload)
 
     return result;
   }

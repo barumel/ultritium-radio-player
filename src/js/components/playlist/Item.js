@@ -24,7 +24,8 @@ export class PlaylistItem extends React.Component {
           title={this.props.title}
           description={this.props.description}
           count={this.props.count}
-          thumb={this.props.thumb}>
+          thumb={this.props.thumb}
+          songs={this.props.songs}>
         </PlaylistItemContent>
       </Panel>
     );

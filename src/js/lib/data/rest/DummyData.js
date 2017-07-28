@@ -14,7 +14,11 @@ const data = {
       description: "Samy's greatest hits",
       thumb: 'http://rap.de/wp-content/uploads/2014/01/samy-deluxe.jpg',
       count: 250,
-      genre: 'rap'
+      genre: 'rap',
+      songs: [{
+        artiest: 'Samy Deluxe',
+        title: 'Weck mich auf'
+      }]
     }, {
       _id: 3,
       title: 'Power Rangers',

@@ -31,7 +31,11 @@ class PlaylistOverview extends React.Component {
   }
 
   create(data) {
-    this.props.dispatch(PlaylistActions.execute('POST', data));
+    this.props.dispatch(PlaylistActions.execute('POST', data))
+      .then((result) => {
+        this.props.dispatch(PlaylistActions.execute('RECENT'));
+        return result;
+      });
   }
 
   render() {
