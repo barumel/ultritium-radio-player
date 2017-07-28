@@ -1,18 +1,23 @@
 import data from '../DummyData';
+import axios from 'axios';
 
 export class FindAction {
   constructor(url) {
     this.url = url;
   }
 
-  execute(query) {
-    const result = data[this.url]['find'];
-
+  async execute(query, options) {
+    query = JSON.stringify(query);
     const url = `${this.url}?q=${query}`;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        return resolve(result);
-      }, 2000);
-    });
+    let result = [];
+
+    try {
+      const response = await axios.get(url);
+      result = response.data;
+    } catch(err) {
+      throw err;
+    }
+
+    return result;
   }
 }

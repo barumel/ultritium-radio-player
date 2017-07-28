@@ -1,18 +1,22 @@
 import data from '../DummyData';
+import axios from 'axios';
 
 export class GetAction {
   constructor(url) {
     this.url = url;
   }
 
-  execute(id) {
-    const result = data[this.url]['get'];
-
+  async execute(id, options) {
     const url = `${this.url}/${id}`;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        return resolve(result);
-      }, 5000);
-    });
+    let result = {};
+
+    try {
+      const response = await axios.get(url);
+      result = response.data;
+    } catch(err) {
+      throw err;
+    }
+
+    return result;
   }
 }

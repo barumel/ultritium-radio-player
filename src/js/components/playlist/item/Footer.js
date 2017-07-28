@@ -10,10 +10,7 @@ export class PlaylistItemFooter extends React.Component {
 
     this.state = {
       collapsed: true,
-      title: 'Show Tracks',
-      children: tracks.map((track) => {
-        return (<ListGroupItem><strong>{track.title} - {track.artist}</strong></ListGroupItem>);
-      })
+      title: 'Show Tracks'
     }
   }
 
@@ -26,7 +23,11 @@ export class PlaylistItemFooter extends React.Component {
   }
 
   render() {
-    const { children } = this.state;
+    const { songs=[] } = this.props.playlist;
+    const children = songs.map((song) => {
+      return <ListGroupItem><strong>{song.title} - {song.artist}</strong></ListGroupItem>
+    });
+
     const playable = children.length > 0;
     const hideTracks = children.length <= 0 ? 'hidden' : '';
     const hideEmpty = children.length > 0 ? 'hidden' : '';
@@ -56,7 +57,7 @@ export class PlaylistItemFooter extends React.Component {
           <Collapse in={!this.state.collapsed}>
             <div>
               <ListGroup class={"" + hideTracks}>
-                {this.state.children}
+                {children}
               </ListGroup>
 
               <Well class={"" + hideEmpty}>

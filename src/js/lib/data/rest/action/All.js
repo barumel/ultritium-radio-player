@@ -1,18 +1,22 @@
 import data from '../DummyData';
+import axios from 'axios';
 
 export class AllAction {
   constructor(url) {
     this.url = url;
   }
 
-  execute() {
+  async execute(options) {
     const url = `${this.url}`;
-    const result = data[this.url]['all'];
+    let result = [];
 
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        return resolve(result);
-      }, 2000);
-    });
+    try {
+      const response = await axios.get(url);
+      result = response.data;
+    } catch(err) {
+      throw err;
+    }
+
+    return result;
   }
 }

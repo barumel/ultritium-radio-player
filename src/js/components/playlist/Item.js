@@ -10,23 +10,19 @@ export class PlaylistItem extends React.Component {
   }
 
   render() {
+    const { playlist } = this.props;
+
     const footer = (
-      <PlaylistItemFooter></PlaylistItemFooter>
+      <PlaylistItemFooter playlist={playlist}></PlaylistItemFooter>
     );
 
     const header = (
-      <PlaylistItemHeader></PlaylistItemHeader>
+      <PlaylistItemHeader playlist={playlist}></PlaylistItemHeader>
     );
 
     return(
       <Panel footer={footer} class="playlist-item">
-        <PlaylistItemContent
-          title={this.props.title}
-          description={this.props.description}
-          count={this.props.count}
-          thumb={this.props.thumb}
-          songs={this.props.songs}>
-        </PlaylistItemContent>
+        <PlaylistItemContent playlist={playlist}></PlaylistItemContent>
       </Panel>
     );
   }
