@@ -13,7 +13,7 @@ export class PlaylistItem extends React.Component {
     const { playlist } = this.props;
 
     const footer = (
-      <PlaylistItemFooter playlist={playlist}></PlaylistItemFooter>
+      <PlaylistItemFooter playlist={playlist} addFavorite={this.props.addFavorite}></PlaylistItemFooter>
     );
 
     const header = (

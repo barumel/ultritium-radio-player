@@ -1,7 +1,14 @@
 import React from 'react';
 import { Row, Col, Button, Modal } from 'react-bootstrap';
 import { PlaylistItem } from './Item';
+import UserActions from '../../data/actions/user/User';
+import { connect } from 'react-redux';
 
+@connect((store) => {
+  return {
+    user: store.user
+  }
+})
 export class PlaylistGroup extends React.Component {
   constructor(props) {
     super(props);
@@ -11,13 +18,25 @@ export class PlaylistGroup extends React.Component {
     this.state = {};
   }
 
+  async addFavorite(playlist) {
+    const user = this.props.user.get;
+
+    if (_.filter(user.favorites, (favorite) => {_id: playlist._id}).length > 0) return;
+
+    user.favorites.push(playlist);
+    console.log('USERRRRRRRR', user);
+    await this.props.dispatch(UserActions.execute('PUT', user));
+    await this.props.dispatch(UserActions.execute('GET', user._id));
+  }
+
   render() {
     const { playlists } = this.props;
     const children = playlists.map((playlist) => {
       return(
         <Col md={4} sm={6} xs={12}>
           <PlaylistItem
-            playlist={playlist}>
+            playlist={playlist}
+            addFavorite={this.addFavorite.bind(this, playlist)}>
           </PlaylistItem>
         </Col>
       );

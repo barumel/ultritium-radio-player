@@ -1,18 +1,26 @@
-import data from '../DummyData';
+import axios from 'axios';
 
 export class PutAction {
   constructor(url) {
     this.url = url;
   }
 
-  execute(id) {
-    const result = data[this.url]['get'];
+  async execute(params, options) {
+console.log('PUT', params);
 
-    const url = `${this.url}/${id}`;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        return resolve(result);
-      }, 5000);
-    });
+    const { _id } = params;
+    const url = `${this.url}/${_id}`;
+    let result = {};
+
+
+
+    try {
+      const response = await axios.put(url, params);
+      result = response.data;
+    } catch(err) {
+      throw err;
+    }
+
+    return result;
   }
 }

@@ -40,7 +40,7 @@ export class PlaylistItemFooter extends React.Component {
         </Col>
 
         <Col md={4} sm={4} xs={4} class="text-center">
-          <Button bsStyle="info" block><i class="fa fa-star"></i></Button>
+          <Button bsStyle="info" block><i class="fa fa-star" onClick={this.props.addFavorite}></i></Button>
         </Col>
 
         <Col md={4} sm={4} xs={4} class="text-center">

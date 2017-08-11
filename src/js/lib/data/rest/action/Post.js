@@ -1,4 +1,3 @@
-import data from '../DummyData';
 import axios from 'axios';
 
 export class PostAction {

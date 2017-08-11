@@ -50,8 +50,7 @@ class PlaylistOverview extends React.Component {
 
   render() {
     const { recent, popular, find, all } = this.props.playlist;
-    const { session } = window;
-    const { favorites } = session.getUser();
+    const { favorites=[] } = this.props.user.get;
 
     // Group by genre
     const grouped = _.groupBy(all, 'genre');
