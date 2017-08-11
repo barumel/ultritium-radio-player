@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const playlists = [{
   _id: 1,
   title: "Super Oesch's",
@@ -23,13 +25,18 @@ export class RecentAction {
     this.url = url;
   }
 
-  execute() {
-    const url = `${this.url}`;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        console.log('RESOLVE POPULAR');
-        return resolve(playlists);
-      }, 2000);
-    });
+  async execute() {
+    const query = JSON.stringify({type: 'recent'});
+    const url = `${this.url}?query=${query}`;
+    let result = [];
+
+    try {
+      const response = await axios.get(url);
+      result = response.data;
+    } catch(err) {
+      throw err;
+    }
+
+    return result;
   }
 }

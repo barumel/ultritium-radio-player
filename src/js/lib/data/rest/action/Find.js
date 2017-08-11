@@ -8,7 +8,7 @@ export class FindAction {
 
   async execute(query, options) {
     query = JSON.stringify(query);
-    const url = `${this.url}?q=${query}`;
+    const url = `${this.url}?query=${query}`;
     let result = [];
 
     try {

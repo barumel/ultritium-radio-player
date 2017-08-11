@@ -17,11 +17,7 @@ export class PlaylistGroup extends React.Component {
       return(
         <Col md={4} sm={6} xs={12}>
           <PlaylistItem
-            playlist={playlist}
-            title={playlist.title}
-            count={playlist.count}
-            description={playlist.description}
-            thumb={playlist.thumb}>
+            playlist={playlist}>
           </PlaylistItem>
         </Col>
       );

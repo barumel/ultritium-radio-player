@@ -7,7 +7,8 @@ export class PlaylistItemContent extends React.Component {
   }
 
   render() {
-    const { title, description, thumb, songs=[] } = this.props.playlist;
+    const { title, description, thumb='http://cypressequities.propertycapsule.com/property/images/No_Image.png', songs=[] } = this.props.playlist;
+    //const { title, description, thumb, songs=[] } = this.props.playlist;
     const count = songs.length;
 
     return(

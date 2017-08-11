@@ -27,11 +27,15 @@ class PlaylistOverview extends React.Component {
   }
 
   search(term) {
-    this.props.dispatch(PlaylistActions.execute('FIND', {term: term}));
+    const query = {
+      type: 'search',
+      value: term
+    }
+
+    this.props.dispatch(PlaylistActions.execute('FIND', query));
   }
 
   create(data) {
-    console.log('-------CREATE', data);
     this.props.dispatch(PlaylistActions.execute('POST', data))
       .then((result) => {
         this.props.dispatch(PlaylistActions.execute('RECENT'));

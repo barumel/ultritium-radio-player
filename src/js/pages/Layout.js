@@ -12,6 +12,10 @@ class Layout extends React.Component {
   }
 
   componentWillMount() {
+    const user = window.session.getUser();
+
+    console.log('USER:::', user);
+
     this.props.dispatch(UserActions.execute('GET', 1));
   }
 

@@ -58,9 +58,9 @@ export class PlaylistModal extends React.Component {
     const children = playlists.map((playlist) => {
       return(
         <ListGroupItem onClick={this.activate.bind(this, playlist)}>
-          <strong>{playlist.title}</strong>
+          <strong>{playlist.title} <i class={"fa fa-check pull-right " + (this.isActive(playlist) ? '' : 'hidden')}></i></strong>
           <p>{playlist.description}</p>
-          <i class={"fa fa-check pull-right " + (this.isActive(playlist) ? '' : 'hidden')}></i>
+
         </ListGroupItem>
       );
     });
