@@ -23,7 +23,7 @@ class Navigation extends React.Component {
         <NavigationItem key="2" title="Songs" target="songs" toggle={toggle}></NavigationItem>,
         <NavigationItem key="3" title="Users" target="users" toggle={toggle}></NavigationItem>,
         <NavigationItem key="4" title="Settings" target="settings" toggle={toggle}></NavigationItem>,
-        <NavigationItem key="5" title="Logout" target="logout" toggle={toggle}></NavigationItem>,
+        <NavigationItem key="5" title="Logout" toggle={toggle} onClick={this.logout.bind(this)}></NavigationItem>,
       ]
     }
   }
@@ -36,6 +36,11 @@ class Navigation extends React.Component {
   toggle() {
     const collapsed = !this.state.collapsed;
     this.setState({collapsed});
+  }
+
+  logout() {
+    const { session } = window;
+    session.destroy();
   }
 
   /**
