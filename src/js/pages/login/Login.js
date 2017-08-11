@@ -102,7 +102,9 @@ export default class LoginPage extends React.Component  {
         </Row>
 
         <Row class={"" + hidden}>
-          Failed
+          <Col lg={12} md={12} sm={12} xs={12}>
+            <p class="text-center error">Login Failed!</p>
+          </Col>
         </Row>
       </Grid>
     );

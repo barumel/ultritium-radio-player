@@ -7,6 +7,7 @@ import { PlaylistCreate } from '../../components/playlist/form/Create';
 import { PlaylistSearch } from '../../components/playlist/Search';
 import { connect } from 'react-redux';
 import PlaylistActions from '../../data/actions/playlist/Playlist';
+import UserActions from '../../data/actions/user/User';
 
 @connect((store) => {
   return {
@@ -21,9 +22,13 @@ class PlaylistOverview extends React.Component {
   }
 
   componentWillMount() {
+    const { session } = window;
+    const { _id } = session.getUser();
+
     this.props.dispatch(PlaylistActions.execute('RECENT'));
     this.props.dispatch(PlaylistActions.execute('POPULAR'));
     this.props.dispatch(PlaylistActions.execute('ALL'));
+    this.props.dispatch(UserActions.execute('GET', _id));
   }
 
   search(term) {
@@ -45,8 +50,8 @@ class PlaylistOverview extends React.Component {
 
   render() {
     const { recent, popular, find, all } = this.props.playlist;
-    let { favorites } = this.props.user.get;
-    favorites = favorites || [];
+    const { session } = window;
+    const { favorites } = session.getUser();
 
     // Group by genre
     const grouped = _.groupBy(all, 'genre');
