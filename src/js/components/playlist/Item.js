@@ -10,10 +10,10 @@ export class PlaylistItem extends React.Component {
   }
 
   render() {
-    const { playlist } = this.props;
+    const { playlist, addFavorite, isFavorite } = this.props;
 
     const footer = (
-      <PlaylistItemFooter playlist={playlist} addFavorite={this.props.addFavorite}></PlaylistItemFooter>
+      <PlaylistItemFooter playlist={playlist} addFavorite={addFavorite} isFavorite={isFavorite}></PlaylistItemFooter>
     );
 
     const header = (

@@ -24,10 +24,11 @@ export class PlaylistItemFooter extends React.Component {
 
   render() {
     const { songs=[] } = this.props.playlist;
+    const { addFavorite, isFavorite } = this.props;
     const children = songs.map((song) => {
       return <ListGroupItem><strong>{song.title} - {song.artist}</strong></ListGroupItem>
     });
-
+console.log(this.props);
     const playable = children.length > 0;
     const hideTracks = children.length <= 0 ? 'hidden' : '';
     const hideEmpty = children.length > 0 ? 'hidden' : '';
@@ -40,7 +41,7 @@ export class PlaylistItemFooter extends React.Component {
         </Col>
 
         <Col md={4} sm={4} xs={4} class="text-center">
-          <Button bsStyle="info" block><i class="fa fa-star" onClick={this.props.addFavorite}></i></Button>
+          <Button bsStyle="info" block disabled={isFavorite} ><i class="fa fa-star" onClick={addFavorite}></i></Button>
         </Col>
 
         <Col md={4} sm={4} xs={4} class="text-center">
