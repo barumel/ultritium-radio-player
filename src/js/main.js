@@ -11,6 +11,7 @@ import LoginPage from "./pages/Login/Login";
 import PlaylistOverview from './pages/playlist/Overview';
 import SettingsOverview from './pages/settings/Overview';
 import SongOverview from './pages/song/Overview';
+import Player from './pages/player/WebPlayer';
 
 import SessionLocalStorage from './lib/session/localStorage';
 const session = new SessionLocalStorage();
@@ -55,6 +56,7 @@ class Application extends EventEmitter {
                 <Route path="settings" component={SettingsOverview}></Route>
                 <Route path="playlists" component={PlaylistOverview}></Route>
                 <Route path="songs" component={SongOverview}></Route>
+                <Route path="player" component={Player}></Route>
               </Route>
             </Router>
           </Provider>,
